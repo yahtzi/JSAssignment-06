@@ -6,6 +6,7 @@
 // Example Output:
 // console.log(reliableMultiply(8, 8)); // outputs 64
 
+
 class MultiplicatorUnitFailure extends Error {}
 
 function primitiveMultiply(a, b) {
@@ -15,7 +16,13 @@ function primitiveMultiply(a, b) {
     throw new MultiplicatorUnitFailure("Klunk");
   }
 }
+console.log(primitiveMultiply(5, 4));
 
 function reliableMultiply(a, b) {
-  // Your code here.
+  try {
+    return primitiveMultiply(a, b);
+  }
+  catch (error) {
+    
+  }
 }

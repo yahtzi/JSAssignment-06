@@ -1,4 +1,5 @@
 // 1. Say you have a function, primitiveMultiply, that in 20% of cases multiplies two
+
 // numbers and in the other 80% of cases raises an exception of type
 // MultiplicatorUnitFailure. Write a function that wraps this clunky function and just
 // keeps trying until a call succeeds, after which it returns the result. Make sure you
@@ -16,13 +17,15 @@ function primitiveMultiply(a, b) {
     throw new MultiplicatorUnitFailure("Klunk");
   }
 }
-console.log(primitiveMultiply(5, 4));
 
 function reliableMultiply(a, b) {
   try {
     return primitiveMultiply(a, b);
   }
   catch (error) {
-    
+    if (error instanceof MultiplicatorUnitFailure) {
+      return reliableMultiply(a, b); 
+    }
   }
 }
+console.log(reliableMultiply(4, 9));
